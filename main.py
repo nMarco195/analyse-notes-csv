@@ -24,3 +24,33 @@ print(classeB.head())
 #L'ajout des notes manquants
 classeA["Projet"] = [15, 18, 12, 19, 11, 16, 13, 17, 10, 20, 15, 9, 17, 13, 18]
 classeB["Projet"] = [14, 17, 11, 18, 10, 15, 12, 16, 11, 19, 14, 8, 16, 12, 17]
+
+
+#Calcule des Moyenne Finale
+for df in [classeA, classeB]:
+    df["Moyenne_DS"] = df[["DS1","DS2","DS3"]].mean(axis=1)
+    df["Moyenne_finale"] = df["Moyenne_DS"] * 0.75 + df["Projet"] * 0.25
+
+#َAffichage des résultats
+print("Classe A: \n", classeA[["nom","Moyenne_DS","Projet","Moyenne_finale"]])
+print("\nClasse B: \n", classeB[["nom","Moyenne_DS","Projet","Moyenne_finale"]])
+
+
+
+#Meilleur Classe
+classe_better = "Classe A" if classeA["Moyenne_finale"].mean() > classeB["Moyenne_finale"].mean() else "Classe B"
+
+#Meilleur Etudient
+best_A = classeA.loc[classeA["Moyenne_finale"].idxmax(), ["nom","Moyenne_finale"]]
+best_B = classeB.loc[classeB["Moyenne_finale"].idxmax(), ["nom","Moyenne_finale"]]
+
+#Moyenne par sexe
+moyenne_sexe_A = classeA.groupby("sexe")["Moyenne_finale"].mean()
+moyenne_sexe_B = classeB.groupby("sexe")["Moyenne_finale"].mean()
+
+# Affichage des Résultatls
+print("Classe meilleure:", classe_better)
+print("\nMeilleur étudiant Classe A:", best_A.to_dict())
+print("Meilleur étudiant Classe B:", best_B.to_dict())
+print("\nMoyenne par sexe Classe A:\n", moyenne_sexe_A.to_dict())
+print("Moyenne par sexe Classe B:\n", moyenne_sexe_B.to_dict())
