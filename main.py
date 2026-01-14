@@ -54,3 +54,16 @@ print("\nMeilleur étudiant Classe A:", best_A.to_dict())
 print("Meilleur étudiant Classe B:", best_B.to_dict())
 print("\nMoyenne par sexe Classe A:\n", moyenne_sexe_A.to_dict())
 print("Moyenne par sexe Classe B:\n", moyenne_sexe_B.to_dict())
+
+import matplotlib.pyplot as plt 
+
+# Histogramme : la distribution des moyennes finales des deux classes
+plt.figure(figsize=(10,5)) 
+plt.hist(classeA["Moyenne_finale"], bins=10, alpha=0.5, label="Classe A") 
+plt.hist(classeB["Moyenne_finale"], bins=10, alpha=0.5, label="Classe B") 
+plt.title("Distribution des Moyennes Finales") 
+plt.xlabel("Moyenne finale") 
+plt.ylabel("Nombre d'étudiants") 
+plt.legend() 
+plt.savefig("figures/fig1.png")
+plt.show()
