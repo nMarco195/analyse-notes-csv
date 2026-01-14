@@ -67,3 +67,15 @@ plt.ylabel("Nombre d'étudiants")
 plt.legend() 
 plt.savefig("figures/fig1.png")
 plt.show()
+
+
+# Nuage de points : la relation entre la somme des notes des DS et la note du projet pour chaque classe
+plt.figure(figsize=(8,5)) 
+plt.scatter(classeA["DS1"] + classeA["DS2"] + classeA["DS3"], classeA["Projet"], label="Classe A", color='blue') 
+plt.scatter(classeB["DS1"] + classeB["DS2"] + classeB["DS3"], classeB["Projet"], label="Classe B", color='orange') 
+plt.title("Projet vs Somme des DS") 
+plt.xlabel("Somme des DS") 
+plt.ylabel("Projet") 
+plt.legend() 
+plt.savefig("figures/fig2.png")
+plt.show()
