@@ -79,3 +79,18 @@ plt.ylabel("Projet")
 plt.legend() 
 plt.savefig("figures/fig2.png")
 plt.show()
+
+
+# Ligne : la moyenne finale de chaque étudiant dans les deux classes
+plt.figure(figsize=(10,5)) 
+classeA_sorted = classeA.sort_values("Moyenne_finale") 
+classeB_sorted = classeB.sort_values("Moyenne_finale") 
+plt.plot(classeA_sorted["nom"], classeA_sorted["Moyenne_finale"], marker='o', label='Classe A') 
+plt.plot(classeB_sorted["nom"], classeB_sorted["Moyenne_finale"], marker='o', label='Classe B') 
+plt.xticks(rotation=90) 
+plt.title("Moyenne finale par étudiant") 
+plt.xlabel("Nom de l'étudiant") 
+plt.ylabel("Moyenne finale") 
+plt.legend() 
+plt.savefig("figures/fig3.png")
+plt.show()
