@@ -20,4 +20,5 @@ Il calcule :
 - Line plot : Moyenne finale par étudiant
 
 ## Auteur
-- MedoTIN (ou votre nom)
+- AYADI MOHAMMED (nMarco195)
+- ET-TOUIL MOHAMMED AMINE (Amine-afx)
