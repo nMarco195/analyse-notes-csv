@@ -94,3 +94,11 @@ plt.ylabel("Moyenne finale")
 plt.legend() 
 plt.savefig("figures/fig3.png")
 plt.show()
+
+# Phase 1 : Résultats par étudiant
+phase1 = pd.concat([
+    classeA.assign(classe="A")[["classe","nom","Moyenne_DS","Projet","Moyenne_finale"]],
+    classeB.assign(classe="B")[["classe","nom","Moyenne_DS","Projet","Moyenne_finale"]]
+], ignore_index=True)
+
+phase1.to_csv("rapports/rapport_phase1.csv", index=False)
