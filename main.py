@@ -102,3 +102,24 @@ phase1 = pd.concat([
 ], ignore_index=True)
 
 phase1.to_csv("rapports/rapport_phase1.csv", index=False)
+
+# Phase 2 : Résumé statistique
+classe_better = "Classe A" if classeA["Moyenne_finale"].mean() > classeB["Moyenne_finale"].mean() else "Classe B"
+
+best_A = classeA.loc[classeA["Moyenne_finale"].idxmax(), ["nom","Moyenne_finale"]]
+best_B = classeB.loc[classeB["Moyenne_finale"].idxmax(), ["nom","Moyenne_finale"]]
+
+moyenne_sexe_A = classeA.groupby("sexe")["Moyenne_finale"].mean().to_dict()
+moyenne_sexe_B = classeB.groupby("sexe")["Moyenne_finale"].mean().to_dict()
+
+phase2 = pd.DataFrame({
+    "Classe meilleure": [classe_better],
+    "Meilleur étudiant A": [best_A["nom"]],
+    "Note meilleur étudiant A": [best_A["Moyenne_finale"]],
+    "Meilleur étudiant B": [best_B["nom"]],
+    "Note meilleur étudiant B": [best_B["Moyenne_finale"]],
+    "Moyenne par sexe A": [moyenne_sexe_A],
+    "Moyenne par sexe B": [moyenne_sexe_B]
+})
+
+phase2.to_csv("rapports/rapport_phase2.csv", index=False)
